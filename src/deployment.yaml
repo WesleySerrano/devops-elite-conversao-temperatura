@@ -14,6 +14,19 @@ spec:
     spec:
       containers:
         - name: site
-          image: fabricioveronez/web-page:green
+          image: wesleyserrano/conversao-temperatura:v1
           ports:
           - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-page
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 8080
+      protocol: TCP
+      nodePort: 30000
+  type: NodePort
